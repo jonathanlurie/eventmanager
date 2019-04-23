@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>EventManager</title>
+</head>
+<body>
+  <script src="../dist/eventmanager.js"></script>
+
+  <p>Open Javascript console.</p>
+
+  <script>
+    let em = new eventmanager()
+
+    let evId01 = em.on('someEvent', function(someArg1, someArg2){
+      console.log('fired 01', someArg1, someArg2)
+    })
+
+    let evId02 = em.on('someEvent', function(){
+      console.log('fired 02')
+    })
+
+    // em.delete(evId)
+
+    em.emit('someEvent', ['arg1', 'arg2'])
+
+  </script>
+
+</body>
+</html>
