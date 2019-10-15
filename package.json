@@ -1,6 +1,6 @@
 {
   "name": "@jonathanlurie/eventmanager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple class to create and subscribe to event",
   "repository": "jonathanlurie/eventmanager",
   "main": "lib/eventmanager.js",
