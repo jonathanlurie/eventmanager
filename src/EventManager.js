@@ -1,3 +1,6 @@
+import uuidv4 from './uuidv4'
+
+
 /**
  * The EventManager deals with events, create them, call them.
  * This class is mostly for being inherited from.
@@ -44,7 +47,7 @@ class EventManager {
         this._events[eventName] = []
       }
 
-      let eventId = this._generateEventId()
+      let eventId = uuidv4()
       this._eventIndex[eventId] = {
         eventName: eventName,
         callback: callback
@@ -92,26 +95,13 @@ class EventManager {
     let eventOfSameName = this._events[this._eventIndex[eventId].eventName]
     let index = eventOfSameName.indexOf(eventId)
 
+    delete this._eventIndex[eventId]
+
     if(index !== -1) {
       eventOfSameName.splice(index, 1)
     }
   }
 
-
-  /**
-   * @private
-   * Generate a pseudorandom event name
-   * @return {string}
-   */
-  _generateEventId(length=8){
-    let text = ''
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
-    for (var i = 0; i < length; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length))
-    }
-    return text
-  }
 
 }
 

@@ -18,6 +18,10 @@
       console.log('fired 02')
     })
 
+    em.delete(evId02)
+
+    console.log(em);
+
     // em.delete(evId)
 
     em.emit('someEvent', ['arg1', 'arg2'])
