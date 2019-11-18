@@ -27,6 +27,19 @@ class EventManager {
 
 
   /**
+   * Tells how many events are registered under this event name
+   * @return {number}
+   */
+  countEvents(eventName){
+    if(eventName in this._events){
+      return this._events[eventName].length
+    }else{
+      return 0
+    }
+  }
+
+
+  /**
    * This way, the events are not emitted
    */
   disableEvents() {
@@ -103,6 +116,10 @@ class EventManager {
 
     if(index !== -1) {
       eventOfSameName.splice(index, 1);
+    }
+
+    if(eventOfSameName.length === 0){
+      delete this._events[this._eventIndex[eventId].eventName];
     }
   }
 

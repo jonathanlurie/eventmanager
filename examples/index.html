@@ -18,6 +18,8 @@
       console.log('fired 02')
     })
 
+    console.log(em.countEvents('someEvent'))
+
     em.delete(evId02)
 
     console.log(em);
@@ -25,6 +27,9 @@
     // em.delete(evId)
 
     em.emit('someEvent', ['arg1', 'arg2'])
+
+    console.log(em.countEvents('someEvent'))
+
 
   </script>
 
