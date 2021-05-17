@@ -77,6 +77,11 @@ class EventManager {
   }
 
 
+  /**
+   * Emit the event, run the functions attached to it
+   * @param {string} eventName - the name of the event to run
+   * @param {Array} args - array of arguments the event callbacks are going to be called with (with destructuring operator)
+   */
   emit(eventName, args = []) {
     if(!this._enabled){
       return
@@ -87,6 +92,28 @@ class EventManager {
       const events = this._events[eventName]
       for (let i = 0; i < events.length; i += 1) {
         this._eventIndex[events[i]].callback(...args)
+      }
+    } else {
+      //console.warn(`No function associated to the event ${eventName}`)
+    }
+  }
+
+
+  /**
+   * Emit the event, run the functions attached to it in a async fashion
+   * @param {string} eventName - the name of the event to run
+   * @param {Array} args - array of arguments the event callbacks are going to be called with (with destructuring operator)
+   */
+   async emitAsync(eventName, args = []) {
+    if(!this._enabled){
+      return
+    }
+
+    // the event must exist and be non null
+    if ((eventName in this._events) && (this._events[eventName].length > 0)) {
+      const events = this._events[eventName]
+      for (let i = 0; i < events.length; i += 1) {
+        await this._eventIndex[events[i]].callback(...args)
       }
     } else {
       //console.warn(`No function associated to the event ${eventName}`)

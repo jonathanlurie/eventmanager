@@ -1,0 +1,46 @@
+<html>
+<head>
+  <title>EventManager</title>
+</head>
+<body>
+  <script src="../dist/eventmanager.js"></script>
+
+  <p>Open Javascript console.</p>
+
+  <script>
+    
+    async function sleep(ms) {
+      const sleepPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        }, ms)
+      })
+      await sleepPromise
+    }
+
+    async function main() {
+      const em = new eventmanager()
+
+      em.on('someEvent', () => {
+        console.log('(1) This is a sync event')
+      })
+
+      em.on('someEvent', async () => {
+        console.log('(2) This is an async event to wait two second...')
+        await sleep(2000)
+        console.log('> (2) waiting done.')
+      })
+
+      em.on('someEvent', () => {
+        console.log('(3) This is a sync event')
+      })
+
+      em.emitAsync('someEvent')
+    }
+
+    main()
+
+  </script>
+
+</body>
+</html>

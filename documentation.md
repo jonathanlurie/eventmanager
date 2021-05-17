@@ -10,10 +10,14 @@
     -   [enableEvents][6]
     -   [on][7]
         -   [Parameters][8]
-    -   [delete][9]
+    -   [emit][9]
         -   [Parameters][10]
--   [uuidv4][11]
-    -   [Parameters][12]
+    -   [emitAsync][11]
+        -   [Parameters][12]
+    -   [delete][13]
+        -   [Parameters][14]
+-   [uuidv4][15]
+    -   [Parameters][16]
 
 ## EventManager
 
@@ -22,7 +26,7 @@ This class is mostly for being inherited from.
 
 ### Parameters
 
--   `enabled` **[boolean][13]** if true (default), the events emitting is enabled, if false, they won't be fired. (optional, default `true`)
+-   `enabled` **[boolean][17]** if true (default), the events emitting is enabled, if false, they won't be fired. (optional, default `true`)
 
 ### countEvents
 
@@ -32,7 +36,7 @@ Tells how many events are registered under this event name
 
 -   `eventName`  
 
-Returns **[number][14]** 
+Returns **[number][18]** 
 
 ### disableEvents
 
@@ -48,10 +52,28 @@ Define an event, with a name associated with a function
 
 #### Parameters
 
--   `eventName` **[String][15]** Name to give to the event
--   `callback` **[Function][16]** function associated to the even
+-   `eventName` **[String][19]** Name to give to the event
+-   `callback` **[Function][20]** function associated to the even
 
-Returns **([string][15] | null)** the eventId (useful to remove it) or null if the event couldnt be added
+Returns **([string][19] | null)** the eventId (useful to remove it) or null if the event couldnt be added
+
+### emit
+
+Emit the event, run the functions attached to it
+
+#### Parameters
+
+-   `eventName` **[string][19]** the name of the event to run
+-   `args` **[Array][21]** array of arguments the event callbacks are going to be called with (with destructuring operator) (optional, default `[]`)
+
+### emitAsync
+
+Emit the event, run the functions attached to it in a async fashion
+
+#### Parameters
+
+-   `eventName` **[string][19]** the name of the event to run
+-   `args` **[Array][21]** array of arguments the event callbacks are going to be called with (with destructuring operator) (optional, default `[]`)
 
 ### delete
 
@@ -60,11 +82,11 @@ Delete an event using its id
 #### Parameters
 
 -   `eventId`  
--   `id` **[string][15]** id of the event (returned by the `.on()` method)
+-   `id` **[string][19]** id of the event (returned by the `.on()` method)
 
 ## uuidv4
 
-This is borrowed from [https://gist.github.com/jed/982883][17]
+This is borrowed from [https://gist.github.com/jed/982883][22]
 because the uuid most popular package is using a node dep
 
 ### Parameters
@@ -87,20 +109,30 @@ because the uuid most popular package is using a node dep
 
 [8]: #parameters-2
 
-[9]: #delete
+[9]: #emit
 
 [10]: #parameters-3
 
-[11]: #uuidv4
+[11]: #emitasync
 
 [12]: #parameters-4
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[13]: #delete
 
-[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[14]: #parameters-5
 
-[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[15]: #uuidv4
 
-[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[16]: #parameters-6
 
-[17]: https://gist.github.com/jed/982883
+[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[22]: https://gist.github.com/jed/982883
